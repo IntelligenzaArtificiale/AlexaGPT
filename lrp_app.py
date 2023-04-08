@@ -8,9 +8,9 @@ import requests
 response = requests.get('https://httpbin.org/ip')
 ip_address = response.json()['origin']
 
-API_HOST='127.0.0.1'
-API_PORT=5000
-API_BASE_URL='https://intelligenzaartificiale-alexagpt-lrp-app-zrqfyj.streamlit.app:5000/'
+API_HOST='0.0.0.0'
+API_PORT=os.environ.get('PORT', 5000)
+API_BASE_URL='https://intelligenzaartificiale-alexagpt-lrp-app-zrqfyj.streamlit.app'
 
 response = requests.get('https://httpbin.org/ip')
 ip_address = response.json()['origin']
@@ -61,8 +61,8 @@ def main():
         st.markdown(f'''
             The LRP API is running. If you\'d like to terminate the LRP click the button below.
             ### API docs
-            - [**http://{API_HOST}:{API_PORT}/docs**](http://{API_HOST}:{API_PORT}/docs)
-            - [**http://{API_HOST}:{API_PORT}/redoc**](http://{API_HOST}:{API_PORT}/redoc)
+            - [**{API_BASE_URL}/docs**]({API_BASE_URL}/docs)
+            - [**{API_BASE_URL}/redoc**]({API_BASE_URL}/redoc)
         ''')
 
         if st.button('\U0001F525 Shutdown LRP'):
@@ -72,14 +72,9 @@ def main():
 
             st.experimental_rerun()
 
-def sidebar():
-    # ABOUT
-    st.sidebar.header('About')
-    st.sidebar.info('FastAPI Wrapper to run and stop a long running process (LRP)!\n\n' + \
-        '(c) 2022. CloudOpti Ltd. All rights reserved.')
-    st.sidebar.markdown('---')
 
-
-if __name__ == '__main__':
+if not state.API_STARTED:
     main()
-    sidebar()
+else:
+    st.warning("Please stop the Long Running Process first.")
+
