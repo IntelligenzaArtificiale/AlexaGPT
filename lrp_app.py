@@ -10,7 +10,7 @@ ip_address = response.json()['origin']
 
 API_HOST='127.0.0.1'
 API_PORT=5000
-API_BASE_URL='http://127.0.0.1:5000'
+API_BASE_URL='https://intelligenzaartificiale-alexagpt-lrp-app-zrqfyj.streamlit.app:5000/'
 
 response = requests.get('https://httpbin.org/ip')
 ip_address = response.json()['origin']
