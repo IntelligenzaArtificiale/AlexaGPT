@@ -8,10 +8,12 @@ import requests
 response = requests.get('https://httpbin.org/ip')
 ip_address = response.json()['origin']
 
-API_HOST=ip_address
+API_HOST='127.0.0.1'
 API_PORT=5000
-API_BASE_URL='http://'+ip_address+':5000'
+API_BASE_URL='http://127.0.0.1:5000'
 
+response = requests.get('https://httpbin.org/ip')
+ip_address = response.json()['origin']
 
 # Session State variables:
 state = st.session_state
@@ -59,8 +61,8 @@ def main():
         st.markdown(f'''
             The LRP API is running. If you\'d like to terminate the LRP click the button below.
             ### API docs
-            - [**http://{API_HOST}:{API_PORT}/docs**](http://{API_HOST}:{API_PORT}/docs)
-            - [**http://{API_HOST}:{API_PORT}/redoc**](http://{API_HOST}:{API_PORT}/redoc)
+            - [**http://{ip_address}:{API_PORT}/docs**](http://{ip_address}:{API_PORT}/docs)
+            - [**http://{ip_address}:{API_PORT}/redoc**](http://{ip_address}:{API_PORT}/redoc)
         ''')
 
         if st.button('\U0001F525 Shutdown LRP'):
