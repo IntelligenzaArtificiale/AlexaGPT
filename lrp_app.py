@@ -61,8 +61,8 @@ def main():
         st.markdown(f'''
             The LRP API is running. If you\'d like to terminate the LRP click the button below.
             ### API docs
-            - [**http://{ip_address}:{API_PORT}/docs**](http://{ip_address}:{API_PORT}/docs)
-            - [**http://{ip_address}:{API_PORT}/redoc**](http://{ip_address}:{API_PORT}/redoc)
+            - [**http://{API_HOST}:{API_PORT}/docs**](http://{API_HOST}:{API_PORT}/docs)
+            - [**http://{API_HOST}:{API_PORT}/redoc**](http://{API_HOST}:{API_PORT}/redoc)
         ''')
 
         if st.button('\U0001F525 Shutdown LRP'):
