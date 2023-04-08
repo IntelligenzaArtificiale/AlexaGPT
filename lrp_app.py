@@ -5,9 +5,9 @@ import requests
 
 # --------------------------------------------------------------------------------
 
-API_HOST='localhost'
+API_HOST='127.0.0.1'
 API_PORT=5000
-API_BASE_URL='http://localhost:5000'
+API_BASE_URL='http://127.0.0.1:5000'
 
 # Session State variables:
 state = st.session_state
